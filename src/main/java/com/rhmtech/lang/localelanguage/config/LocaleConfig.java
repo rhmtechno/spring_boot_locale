@@ -13,6 +13,11 @@ import java.util.Locale;
 @Configuration
 public class LocaleConfig {
 
+    private final DatabaseMessageSource databaseMessageSource;
+
+    public LocaleConfig(DatabaseMessageSource databaseMessageSource) {
+        this.databaseMessageSource = databaseMessageSource;
+    }
     @Bean
     public LocaleResolver localeResolver() {
         AcceptHeaderLocaleResolver resolver = new AcceptHeaderLocaleResolver();
@@ -27,9 +32,6 @@ public class LocaleConfig {
 
     @Bean
     public MessageSource messageSource() {
-        ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
-        messageSource.setBasename("classpath:messages");
-        messageSource.setDefaultEncoding("UTF-8"); // Crucial for non-English characters
-        return messageSource;
+        return databaseMessageSource;
     }
 }
