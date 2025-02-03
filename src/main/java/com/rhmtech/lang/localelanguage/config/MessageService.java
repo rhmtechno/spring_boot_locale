@@ -1,4 +1,5 @@
 package com.rhmtech.lang.localelanguage.config;
+
 import com.rhmtech.lang.localelanguage.data.LocalMessage;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
