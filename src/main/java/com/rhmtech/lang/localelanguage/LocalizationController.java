@@ -1,10 +1,8 @@
 package com.rhmtech.lang.localelanguage;
 import com.rhmtech.lang.localelanguage.config.MessageService;
+import com.rhmtech.lang.localelanguage.data.LocalMessage;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.Locale;
 
 @RestController
 public class LocalizationController {
@@ -18,11 +16,11 @@ public class LocalizationController {
 
     @GetMapping("/greet")
     public String greet() {
-        return messageService.getMessage("welcome.message");
+        return messageService.getMessage(LocalMessage.WELCOME_MESSAGE);
     }
 
     @GetMapping("/error")
     public String errorMessage() {
-        return messageService.getMessage("error.notfound");
+        return messageService.getMessage(LocalMessage.ERROR_NOT_FOUND);
     }
 }
